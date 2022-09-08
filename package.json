@@ -1,0 +1,15 @@
+{
+  "name": "automation-practice",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "cypress": "^9.1.1",
+    "faker": "^5.5.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Felipe Galdino",
+  "license": "ISC",
+  "description": ""
+}
