@@ -13,6 +13,7 @@ describe('Cadastro de novo usuário', () => {
         lastName: faker.name.lastName()
         }}
     it('Cadastrando novo e-mail válido', () => {
+        
         cy.get('#email_create').type(user.email);
         cy.get('#SubmitCreate').click();
     });
@@ -20,11 +21,7 @@ describe('Cadastro de novo usuário', () => {
     it('Criando login de usuário com sucesso', () => {
         cy.url().should('include' , '#account-creation');
         cy.get('#email').should('have.value' , user.email);
-        //POST 200 /index.php
-        // cy.server()
-        // cy.route('POST','**/index').as('index');
-        // cy.wait('@index.php')
-
+        
         cy.get('[type="radio"]').first().check();
         cy.get('#customer_firstname').type(user.name.firstName);
         cy.get('#customer_lastname').type(user.name.lastName);
@@ -42,8 +39,12 @@ describe('Cadastro de novo usuário', () => {
         cy.get('#phone').type(faker.phone.phoneNumberFormat());
         cy.get('#phone_mobile').type(faker.phone.phoneNumberFormat());
         cy.get('#alias').clear().type(user.email);
-        cy.contains('Register').click()
         
-    }); 
+    });
+    it('Finalizar cadastro', () => {
+        cy.contains('Register').click()
+        cy.contains(`${user.name.firstName} ${user.name.lastName}`).should('be.visible')
+    });
+     
 });
 
